@@ -15,13 +15,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText url = (EditText) findViewById(R.id.edURL);
-        Button ok = (Button) findViewById(R.id.btURL);
+        final EditText url = (EditText) findViewById(R.id.etURL);
+        Button ok = (Button) findViewById(R.id.btUrl);
 
         ok.setOnClickListener(new View.OnClickListener(){
             public void onClick (View view){
                 Uri uri = Uri.parse(url.getText().toString());
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        final EditText etNome = (EditText) findViewById(R.id.etNome);
+
+        Button btOutra = (Button) findViewById(R.id.btSegunda);
+        btOutra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this,SegundaActivity.class);
+                intent.putExtra("nome",etNome.getText().toString());
                 startActivity(intent);
             }
         });
